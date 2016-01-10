@@ -1,17 +1,30 @@
-Insights:
+# Perfect bits
+
+See question here: https://gist.github.com/gkop/58d702d448bf089d63f9
+
+## Insights:
 
 1. Since we are working with 64-bit integers, the maximum number of ones is 64.
-   This means that there are no numbers in our range [0...2^64] whose ones add
+   This means that there are no numbers in our range `[0...2^64]` whose ones add
    up to a perfect square > 64. So our list of possible perfect squares is
    actually quite small.
 
-2. Figuring out how many numbers in the range [0...2^n] have m ones is actually
-   a well-understood combinatorics problem: nCm or combination(n, m).
+2. Figuring out how many numbers in the range `[0...2^n]` have `m` ones is actually
+   a well-understood combinatorics problem: `nCm` or `combination(n, m)`.
 
-3. To calculate how many numbers in the range [0...n] have m ones, you can
-   factor the number out into k powers of 2, and for each factor f[i] for i in
-   [0...k], calculate the amount of numbers in the range [0...f[i]] that have
-   m-i ones using insight 2. This is kinda complicated written down, but some
+3. If we know how many numbers in the range `[0...n]` have `m` ones, and we know how
+   many numbers in the range `[0...p]` have `m` ones, then we know how many numbers
+   in the range `[n...p]` have `m` ones: `num_ones([0...n]) - num_ones([0...p])`.
+
+4. We can repeat this calculation for all perfect squares in the range between
+   `[0..64]` and sum them for our answer.
+
+5. This is the hardest part:
+
+   To calculate how many numbers in the range `[0...n]` have `m` ones, you can
+   factor `n` into `k` powers of 2, and for each factor `f[i]` for `i` in
+   `[0...k]`, calculate the amount of numbers in the range `[0...f[i]]` that have
+   `m-i` ones using insight 2. This is kinda complicated written down, but some
    examples might help:
 
      The number of arrangements of 4 ones in [0...100000100] =
