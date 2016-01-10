@@ -14,7 +14,9 @@ binary_string_as_number = (val) -> new BigNumber(val, 2)
 binary_magnitude_of = (num) -> new BigNumber(number_as_binary_string(num).length)
 
 strip_largest_binary_magnitude = (num) ->
-  binary_string_as_number(number_as_binary_string(num).substr(1))
+  stripped_number = number_as_binary_string(num).substr(1)
+  return new BigNumber(0) if stripped_number.length is 0
+  binary_string_as_number stripped_number
 
 factorial = (value, stopping_point = 1) ->
   return value if value.lessThanOrEqualTo(stopping_point)
@@ -56,4 +58,4 @@ perfect_bits = (min, max) ->
 
 console.log perfect_bits('1645098712823793798', '14889998042940624528').toString()
 console.log "1070002673201129717"
-# console.log perfect_bits(0, 512).toString()
+# console.log perfect_bits(0, 513).toString()
