@@ -1,5 +1,4 @@
 BigNumber = require 'bignumber.js'
-combinatorics = require 'js-combinatorics'
 
 sum = (array, reducer) ->
   array.reduce(
