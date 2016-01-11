@@ -6,6 +6,7 @@ sum = (array, reducer) ->
     new BigNumber 0
   ).toNumber()
 
+num_ones = (val) -> number_as_binary_string(val).replace(/0/g, '').length
 perfect_squares = [1..8].map (val) -> new BigNumber(val).pow(2)
 
 number_as_binary_string = (val) -> new BigNumber(val).toString(2)
@@ -42,6 +43,8 @@ number_of_ways_to_arrange_ones_in_range = (max, number_of_ones) ->
       strip_largest_binary_magnitude(max),
       number_of_ones.minus(1)
     )
+  ).plus(
+    if number_of_ones.equals(num_ones(max)) then 1 else 0
   )
 
 perfect_bits = (min, max) ->
@@ -58,4 +61,17 @@ perfect_bits = (min, max) ->
 
 console.log perfect_bits('1645098712823793798', '14889998042940624528').toString()
 console.log "1070002673201129717"
-# console.log perfect_bits(0, 513).toString()
+# num_ones = (val) -> number_as_binary_string(val).replace(/0/g, '').length
+
+# naiive_solution = (min, max) ->
+#   sum perfect_squares, (number) -> naiive_part_solution(min, max, number)
+
+# naiive_part_solution = (min, max, number) ->
+#   result = [min..max].filter((v) -> number.eq(num_ones(v))).map(number_as_binary_string).length
+#   console.log {number: number.toString(), result}
+#   result
+
+# console.log number_as_binary_string(512)
+# console.log perfect_bits(0, 512).toString()
+# console.log naiive_solution(0, 512).toString()
+

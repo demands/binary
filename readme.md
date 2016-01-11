@@ -22,7 +22,7 @@ See question here: https://gist.github.com/gkop/58d702d448bf089d63f9
 5. This is the hardest part:
 
    To calculate how many numbers in the range `[0...n]` have `m` ones, you can
-   factor `n` into `k` powers of 2, and for each factor `f[i]` for `i` in
+   separate `n` into `k` powers of 2, and for each number `f[i]` for `i` in
    `[0...k]`, calculate the amount of numbers in the range `[0...f[i]]` that have
    `m-i` ones using insight 2. This is kinda complicated written down, but some
    examples might help:
