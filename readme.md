@@ -1,7 +1,5 @@
 # Perfect bits
 
-See question here: https://gist.github.com/gkop/58d702d448bf089d63f9
-
 ## Insights:
 
 1. Since we are working with 64-bit integers, the maximum number of ones is 64.
